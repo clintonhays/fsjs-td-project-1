@@ -1,33 +1,61 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
+/***
+ * A random quote generator for the Treehouse
+ * Full Stack JavaScript Techdegree
+ * Project 1
+ ***/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/*** 
- * `quotes` array 
-***/
-
-
+// Quotes array
+const quotes = [
+  {
+    quote    : 'Who controls the past controls the future. Who controls the present controls the past.',
+    source   : 'George Orwell',
+    citation : '1984',
+    year     : 1949,
+  },
+  {
+    quote    : 'Science is magic that works.',
+    source   : 'Kurt Vonnegut',
+    citation : 'Cats Cradle',
+    year     : 1963,
+  },
+  {
+    quote    : 'You have to be a bit of a liar to tell a story the right way.',
+    source   : 'Patrick Rothfuss',
+    citation : 'The Name of the Wind',
+    year     : 2007,
+  },
+  {
+    quote    :
+      'Like who really run this? Like who really run that man that say he run this? Who who really run that man that say he run this?',
+    source   : 'Killer Mike',
+    citation : 'Lie Cheat Steal',
+    year     : 2014,
+  },
+  {
+    quote    : 'A little nonsense now and then is relished by the wisest men.',
+    source   : 'Roald Dahl',
+    citation : 'Charlie and the Great Glass Elevator',
+    year     : 1972,
+  },
+  {
+    quote    : "We shouldn't be looking for heroes, we should be looking for good ideas.",
+    source   : 'Noam Chomsky',
+    citation : 'Interview with David Cogswell',
+    year     : 1993,
+  },
+];
 
 /***
  * `getRandomQuote` function
 ***/
 
-
-
 /***
  * `printQuote` function
 ***/
-
-
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener('click', printQuote, false);
