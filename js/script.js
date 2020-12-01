@@ -45,9 +45,21 @@ const quotes = [
   },
 ];
 
-/***
- * `getRandomQuote` function
-***/
+/**
+ * returns a random quote object from an array
+ * 
+ * @param {array} arr - The array of quote objects
+ * @return {object} The quote object from the array
+ */
+
+const getRandomQuote = (arr) => {
+  // generate random number based on array length
+  const randNum = Math.floor(Math.random() * arr.length);
+  // get random quote based on index
+  const randQuote = arr[randNum];
+  // return randQuote
+  return randQuote;
+};
 
 /***
  * `printQuote` function
