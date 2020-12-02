@@ -82,7 +82,16 @@ const getRandomQuote = (arr) => {
 const changeBG = () => {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   body.style.backgroundColor = '#' + randomColor;
-  color.innerHTML = '#' + randomColor;
+};
+
+// TODO: Fix fade functions to transition quoteBox
+
+/***
+ * create fadeOut/fadeIn for innerhtml 
+ ***/
+
+const fadeOut = () => {
+  quoteBox.style.opacity = 0;
 };
 
 /**
@@ -112,30 +121,10 @@ const printQuote = () => {
   quoteBox.innerHTML = html;
   // call function to generate random background color
   changeBG();
+  fadeOut();
 };
 
-// TODO: Fix fade functions to transition innerhtml of quoteBox
-
-/***
- * create fadeOut/fadeIn for innerhtml 
- ***/
-
-// set starting opacity
-quoteBox.style.opacity = 1.0;
-
-const fadeOut = () => {
-  quoteBox.style.opacity = 0;
-};
-
-const fadeIn = () => {
-  quoteBox.style.opacity = 1.0;
-};
-
-// set interval to call fade functions
-window.setInterval(fadeOut, 8000);
-window.setInterval(fadeIn, 8000);
-
-window.setInterval(printQuote, 8000);
+window.setInterval(printQuote, 3000);
 
 /***
  * click event listener for the print quote button
