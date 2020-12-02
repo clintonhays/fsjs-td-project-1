@@ -4,6 +4,14 @@
  * Project 1
  ***/
 
+/***
+ * Global variables
+ ***/
+const body = document.body;
+const container = document.getElementsByClassName('container')[0];
+const quoteBox = document.getElementById('quote-box');
+const button = document.getElementById('load-quote');
+
 // Quotes array
 const quotes = [
   {
@@ -73,7 +81,7 @@ const getRandomQuote = (arr) => {
 
 const changeBG = () => {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-  document.body.style.backgroundColor = '#' + randomColor;
+  body.style.backgroundColor = '#' + randomColor;
   color.innerHTML = '#' + randomColor;
 };
 
@@ -101,10 +109,31 @@ const printQuote = () => {
   // concat closing tag
   html += `</p>`;
   // insert random quote and additional properties to quote-box div
-  document.getElementById('quote-box').innerHTML = html;
+  quoteBox.innerHTML = html;
   // call function to generate random background color
   changeBG();
 };
+
+// TODO: Fix fade functions to transition innerhtml of quoteBox
+
+/***
+ * create fadeOut/fadeIn for innerhtml 
+ ***/
+
+// set starting opacity
+quoteBox.style.opacity = 1.0;
+
+const fadeOut = () => {
+  quoteBox.style.opacity = 0;
+};
+
+const fadeIn = () => {
+  quoteBox.style.opacity = 1.0;
+};
+
+// set interval to call fade functions
+window.setInterval(fadeOut, 8000);
+window.setInterval(fadeIn, 8000);
 
 window.setInterval(printQuote, 8000);
 
@@ -113,4 +142,4 @@ window.setInterval(printQuote, 8000);
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener('click', printQuote, false);
+button.addEventListener('click', printQuote, false);
