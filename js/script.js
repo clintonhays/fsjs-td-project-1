@@ -94,11 +94,16 @@ const fadeOut = () => {
   quoteBox.style.opacity = 0;
 };
 
+const fadeIn = () => {
+  quoteBox.style.opacity = 1;
+};
+
 /**
  * generates the html code block to be displayed in
  */
 
 const printQuote = () => {
+  fadeIn();
   // call function to get random quote
   const quote = getRandomQuote(quotes);
   // generate html to display quote and additional properties
