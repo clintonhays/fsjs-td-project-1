@@ -68,6 +68,16 @@ const getRandomQuote = (arr) => {
 };
 
 /**
+ * generate a random hex color and assign it to body background
+ */
+
+const changeBG = () => {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  document.body.style.backgroundColor = '#' + randomColor;
+  color.innerHTML = '#' + randomColor;
+};
+
+/**
  * generates the html code block to be displayed in
  */
 
@@ -90,17 +100,13 @@ const printQuote = () => {
   }
   // concat closing tag
   html += `</p>`;
+  // insert random quote and additional properties to quote-box div
   document.getElementById('quote-box').innerHTML = html;
-};
-
-const changeBG = () => {
-  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-  document.body.style.backgroundColor = '#' + randomColor;
-  color.innerHTML = '#' + randomColor;
+  // call function to generate random background color
+  changeBG();
 };
 
 window.setInterval(printQuote, 8000);
-window.setInterval(changeBG, 8000);
 
 /***
  * click event listener for the print quote button
