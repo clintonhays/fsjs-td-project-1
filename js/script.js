@@ -11,6 +11,7 @@ const body = document.body;
 const container = document.getElementsByClassName('container')[0];
 const quoteBox = document.getElementById('quote-box');
 const button = document.getElementById('load-quote');
+let autoQuote; // empty variable to handle clearing setInterval when using button to generate new quote
 
 // Quotes array
 const quotes = [
@@ -36,8 +37,7 @@ const quotes = [
     tag      : 'humor',
   },
   {
-    quote    :
-      'Like who really run this? Like who really run that man that say he run this? Who really run that man that say he run this?',
+    quote    : 'Like who really run this? Like who really run that man that say he run this?',
     source   : 'Killer Mike',
     citation : 'Lie Cheat Steal',
     year     : 2014,
@@ -84,11 +84,11 @@ const changeBG = () => {
   body.style.backgroundColor = '#' + randomColor;
 };
 
-// TODO: Fix fade functions to transition quoteBox
-
-/***
- * create fadeOut/fadeIn for innerhtml 
- ***/
+/**
+ * create fadeOut/fadeIn for quoteBox by
+ * transitioning opacity. Works with transition
+ * property on .quote-box in css file.
+ */
 
 const fadeOut = () => {
   quoteBox.style.opacity = 0;
@@ -100,6 +100,7 @@ const fadeIn = () => {
 
 /**
  * generates the html code block to be displayed in
+ * quote-box
  */
 
 const printQuote = () => {
@@ -108,7 +109,7 @@ const printQuote = () => {
   // generate html to display quote and additional properties
   let html = `
   <p class="quote">${quote.quote}</p>
-  <p>${quote.source}`;
+  <p class="source">${quote.source}`;
   // check for additional properties & concat to html string
   if (quote.citation) {
     html += `<span class="citation">${quote.citation}</span>`;
@@ -125,19 +126,46 @@ const printQuote = () => {
   quoteBox.innerHTML = html;
   // call function to generate random background color
   changeBG();
-
-  window.setTimeout(fadeOut, 7500);
-
-  fadeIn();
+  // clear setInterval on each call to keep timing when using button to generate new quote
+  clearTimeout(autoQuote);
+  // restart setInterval function
+  handleAutoQuote();
 };
 
-const autoQuote = () => window.setInterval(printQuote, 8000);
+/**
+ * handles the process of fading out quote-box
+ * printing new quote and fading in quote-box
+ */
 
-autoQuote();
+const handleFade = () => {
+  fadeOut();
+  setTimeout(printQuote, 300);
+  setTimeout(fadeIn, 400);
+};
+
+/**
+ * calls setInterval using a variable that allows
+ * setInterval to be cleared in printquote function
+ */
+
+const handleAutoQuote = () => {
+  autoQuote = window.setInterval(handleFade, 8000);
+};
+
+handleAutoQuote();
+
+//   window.setTimeout(fadeOut, 7500);
+
+//   fadeIn();
+// };
+
+// const autoQuote = () => window.setInterval(printQuote, 8000);
+
+// autoQuote();
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-button.addEventListener('click', printQuote, false);
+button.addEventListener('click', handleFade, false);
