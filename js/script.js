@@ -8,7 +8,6 @@
  * Global variables
  ***/
 const body = document.body;
-const container = document.getElementsByClassName('container')[0];
 const quoteBox = document.getElementById('quote-box');
 const button = document.getElementById('load-quote');
 let autoQuote; // empty variable to handle clearing setInterval when using button to generate new quote
@@ -153,15 +152,6 @@ const handleAutoQuote = () => {
 };
 
 handleAutoQuote();
-
-//   window.setTimeout(fadeOut, 7500);
-
-//   fadeIn();
-// };
-
-// const autoQuote = () => window.setInterval(printQuote, 8000);
-
-// autoQuote();
 
 /***
  * click event listener for the print quote button
