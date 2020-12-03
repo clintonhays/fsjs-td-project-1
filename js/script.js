@@ -103,7 +103,6 @@ const fadeIn = () => {
  */
 
 const printQuote = () => {
-  fadeIn();
   // call function to get random quote
   const quote = getRandomQuote(quotes);
   // generate html to display quote and additional properties
@@ -126,10 +125,15 @@ const printQuote = () => {
   quoteBox.innerHTML = html;
   // call function to generate random background color
   changeBG();
-  fadeOut();
+
+  window.setTimeout(fadeOut, 7500);
+
+  fadeIn();
 };
 
-window.setInterval(printQuote, 3000);
+const autoQuote = () => window.setInterval(printQuote, 8000);
+
+autoQuote();
 
 /***
  * click event listener for the print quote button
